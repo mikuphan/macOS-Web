@@ -1,0 +1,99 @@
+:root {
+    --bg-url: url('https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-2020-5120x2880-1455.jpg');
+}
+
+* { box-sizing: border-box; user-select: none; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+body { overflow: hidden; height: 100vh; background: var(--bg-url) center/cover no-repeat; }
+
+/* Menu Bar */
+.menu-bar {
+    position: fixed; top: 0; left: 0; right: 0; height: 30px;
+    background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 20px; color: white; font-size: 14px; z-index: 9999;
+}
+.left-menu, .right-menu { display: flex; gap: 15px; align-items: center; }
+.app-name { font-weight: 700; }
+.status-item { display: flex; align-items: center; gap: 5px; cursor: default; }
+
+/* Desktop Icons */
+.desktop-icons { position: absolute; top: 50px; right: 20px; display: flex; flex-direction: column; gap: 20px; }
+.d-icon { width: 80px; text-align: center; cursor: pointer; }
+.icon-bg { font-size: 40px; color: white; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+.safari-icon { color: #00d2ff; background: white; border-radius: 12px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+.icon-name { color: white; margin-top: 5px; font-size: 12px; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
+
+/* WINDOW CHÍNH */
+.window {
+    position: absolute; top: 100px; left: 200px;
+    width: 800px; height: 500px; min-width: 400px; min-height: 300px;
+    background: #f6f6f6; border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column;
+    overflow: hidden; border: 1px solid #ccc;
+}
+
+/* Header để kéo */
+.window-header {
+    height: 38px; background: #e8e8e8;
+    display: flex; align-items: center; padding: 0 15px;
+    cursor: default; border-bottom: 1px solid #d1d1d1;
+}
+
+.traffic-lights { display: flex; gap: 8px; margin-right: 15px; }
+.light { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.1); cursor: pointer; }
+.red { background: #ff5f57; } .yellow { background: #febc2e; } .green { background: #28c840; }
+.window-title { flex: 1; text-align: center; font-size: 13px; color: #555; font-weight: 500; pointer-events: none; }
+
+/* Toolbar */
+.browser-toolbar {
+    height: 44px; background: #f6f6f6; display: flex; align-items: center;
+    padding: 0 15px; gap: 15px; border-bottom: 1px solid #d1d1d1;
+}
+.url-bar {
+    flex: 1; background: #fff; height: 28px; border-radius: 6px;
+    border: 1px solid #d1d1d1; display: flex; align-items: center; padding: 0 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.url-bar input { border: none; outline: none; flex: 1; margin: 0 10px; font-size: 13px; }
+
+/* Content iframe */
+.window-content { flex: 1; position: relative; background: white; }
+iframe { width: 100%; height: 100%; border: none; }
+
+/* Shield: Lớp phủ trong suốt bật lên khi kéo để tránh iframe chiếm chuột */
+.iframe-shield {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: none; z-index: 10;
+}
+
+/* RESIZER: Nút kéo góc dưới phải */
+.resizer {
+    position: absolute; right: 0; bottom: 0;
+    width: 20px; height: 20px;
+    cursor: se-resize;
+    z-index: 20;
+}
+/* Tạo ký hiệu gạch chéo ở góc để biết là chỗ resize */
+.resizer::after {
+    content: ''; position: absolute; right: 4px; bottom: 4px;
+    width: 8px; height: 8px;
+    border-bottom: 2px solid #ccc; border-right: 2px solid #ccc;
+}
+
+/* Dock */
+.dock-container { position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: center; pointer-events: none; }
+.dock {
+    background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(15px);
+    padding: 10px 15px; border-radius: 20px; display: flex; gap: 15px;
+    pointer-events: auto; border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+.dock-item {
+    width: 50px; height: 50px; background: white; border-radius: 12px;
+    font-size: 24px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.dock-item:hover { transform: scale(1.3) translateY(-15px); }

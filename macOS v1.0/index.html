@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>macOS Pro Simulator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="desktop">
+        
+        <header class="menu-bar">
+            <div class="left-menu">
+                <span class="apple-logo"><i class="fab fa-apple"></i></span>
+                <span class="app-name">Safari</span>
+                <span>File</span>
+                <span>Edit</span>
+                <span>View</span>
+                <span>History</span>
+                <span>Window</span>
+                <span>Help</span>
+            </div>
+            <div class="right-menu">
+                <div class="status-item">
+                    <span id="battery-level">--%</span>
+                    <span id="battery-icon"><i class="fas fa-battery-full"></i></span>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <div class="status-item">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="clock" id="clock">--:--</div>
+            </div>
+        </header>
+
+        <div class="desktop-icons">
+            <div class="d-icon" onclick="openWindow()">
+                <div class="icon-bg safari-icon"><i class="far fa-compass"></i></div>
+                <div class="icon-name">Safari</div>
+            </div>
+        </div>
+
+        <div class="window" id="myWindow">
+            <div class="window-header" id="windowHeader">
+                <div class="traffic-lights">
+                    <div class="light red" onclick="closeWindow()"></div>
+                    <div class="light yellow" onclick="minimizeWindow()"></div>
+                    <div class="light green" onclick="maximizeWindow()"></div>
+                </div>
+                <div class="window-title">Google - Safari</div>
+            </div>
+
+            <div class="browser-toolbar">
+                <div class="nav-buttons">
+                    <i class="fas fa-chevron-left"></i>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="url-bar">
+                    <i class="fas fa-lock"></i>
+                    <input type="text" id="urlInput" value="https://www.wikipedia.org" onkeydown="handleEnter(event)">
+                    <i class="fas fa-rotate-right" onclick="loadUrl()" style="cursor:pointer"></i>
+                </div>
+            </div>
+
+            <div class="window-content">
+                <iframe id="browserFrame" src="https://www.wikipedia.org"></iframe>
+                <div class="iframe-shield" id="iframeShield"></div>
+            </div>
+
+            <div class="resizer" id="resizer"></div>
+        </div>
+
+        <div class="dock-container">
+            <div class="dock">
+                <div class="dock-item" onclick="openWindow()"><i class="far fa-compass" style="color: #00d2ff;"></i></div>
+                <div class="dock-item"><i class="fas fa-folder-open" style="color: #007aff;"></i></div>
+                <div class="dock-item"><i class="fas fa-comment-dots" style="color: #34c759;"></i></div>
+                <div class="dock-item"><i class="fas fa-music" style="color: #ff2d55;">
