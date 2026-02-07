@@ -1,0 +1,58 @@
+:root {
+    --mac-bg: url('https://images.hdqwalls.com/download/macos-monterey-stock-black-dark-mode-5k-zh-2560x1440.jpg');
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, sans-serif; user-select: none; }
+body { background: #000; overflow: hidden; height: 100vh; }
+
+#boot-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #000; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; z-index: 9999;
+}
+#boot-screen i { color: white; font-size: 80px; margin-bottom: 50px; }
+.progress-bar { width: 200px; height: 4px; background: #333; border-radius: 2px; }
+.progress-fill { width: 0%; height: 100%; background: white; border-radius: 2px; animation: load 3s forwards; }
+@keyframes load { 100% { width: 100%; } }
+
+.desktop { width: 100%; height: 100%; background: var(--mac-bg) center/cover no-repeat; position: relative; }
+
+.menu-bar {
+    height: 30px; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(25px);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 20px; color: white; font-size: 13px; z-index: 5000;
+}
+.left-menu, .right-menu { display: flex; gap: 15px; align-items: center; }
+
+.window {
+    position: absolute; min-width: 450px; min-height: 350px;
+    background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px);
+    border-radius: 12px; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.window-header {
+    height: 38px; background: rgba(230, 230, 230, 0.6);
+    display: flex; align-items: center; padding: 0 12px; cursor: default;
+}
+.traffic-lights { display: flex; gap: 8px; }
+.light { width: 12px; height: 12px; border-radius: 50%; border: 0.5px solid rgba(0,0,0,0.1); cursor: pointer; }
+.red { background: #ff5f57; } .yellow { background: #febc2e; } .green { background: #28c840; }
+
+.window-content { flex: 1; position: relative; background: white; color: #333; }
+iframe { width: 100%; height: 100%; border: none; }
+.iframe-shield { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; z-index: 10; }
+
+.dock-container { position: absolute; bottom: 15px; width: 100%; display: flex; justify-content: center; z-index: 6000; }
+.dock {
+    background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px);
+    padding: 10px; border-radius: 20px; display: flex; align-items: center; gap: 12px;
+}
+.dock-item {
+    width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.dock-item img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); }
+.dock-item:hover { transform: scale(1.4) translateY(-10px); margin: 0 10px; }
+.separator { width: 1px; height: 35px; background: rgba(255,255,255,0.2); }
