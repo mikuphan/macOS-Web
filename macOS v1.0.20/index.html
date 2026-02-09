@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>macOS Web v1.0.20</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="boot-screen">
+        <i class="fab fa-apple"></i>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+    </div>
+
+    <div class="desktop" id="os-content" style="display: none;">
+        <header class="menu-bar">
+            <div class="left-menu">
+                <span class="apple-logo"><i class="fab fa-apple"></i></span>
+                <span class="active-app-name" id="current-app">Finder</span>
+                <span>File</span><span>Edit</span><span>View</span><span>Go</span>
+            </div>
+            <div class="right-menu">
+                <span id="battery-status">--% <i class="fas fa-battery-full"></i></span>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-search"></i>
+                <span id="clock">--:--</span>
+            </div>
+        </header>
+
+        <div id="window-container"></div>
+
+        <div class="dock-container">
+            <div class="dock">
+                <div class="dock-item" onclick="createWindow('finder')" title="Finder">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Finder_Icon_macOS_Big_Sur.png">
+                </div>
+                <div class="dock-item" onclick="createWindow('safari')" title="Safari">
+                    <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5fedaca1b9e6895ee8a9e47d_15_safari.png">
+                </div>
+                <div class="dock-item" onclick="createWindow('settings')" title="About This Mac">
+                    <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5fedaca0b9e689e1d2a9e47b_08_system-preferences.png">
+                </div>
+                <div class="dock-item" onclick="createWindow('notes')" title="Notes">
+                    <img src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5fedaca2823a56caa6687a48_23_notes.png">
+                </div>
+                <div class="separator"></div>
+                <div class="dock-item" title="Trash">
+                    <img src="https://img.apponic.com/9/131/9ec2b5dbeffc9b542a19c8985c1a506b.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
